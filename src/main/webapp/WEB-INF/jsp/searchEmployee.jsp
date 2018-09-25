@@ -93,6 +93,25 @@ jQuery(function() {
 							<f:input path="shimeiKana" class="form-control" id="text" placeholder="氏名かな" type="text" size="1"/>
 						</div>
 					</td>
+					<th class="info">契約形態</th>
+					<td>
+						<div class="col-md-5">
+							<f:checkboxes items="      " path="         "/>
+
+
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<th class="info">年齢</th>
+					<td>
+						<div class="col-md-5">
+							<f:input path="nenreimin" class="form-control" id="number" placeholder="最小" type="number" size="1"/>
+							<f:input path="nenreimax" class="form-control" id="number" placeholder="最大" type="number" size="1"/>
+						</div>
+
+					</td>
 					<th class="info">役職</th>
 					<td>
 						<div class="col-md-5">
@@ -105,13 +124,8 @@ jQuery(function() {
 						</div>
 					</td>
 				</tr>
+
 				<tr>
-					<th class="info">生年月日</th>
-					<td>
-						<div class="col-md-7">
-							<f:input path="seinengappi" class="form-control" id="text" placeholder="1990年11月1日なら19901101と入力" type="number" size="1"/>
-						</div>
-					</td>
 					<th class="info">性別</th>
 					<td>
 						<div class="col-md-5; form-inline">
@@ -122,29 +136,36 @@ jQuery(function() {
 							</label>
 						</div>
 					</td>
-				</tr>
-				<tr>
-					<th class="info">契約社員　</th>
+					<th class="info">入社日</th>
 					<td>
-						<div class="col-md-5; form-inline">
-							<div class="radio">
-								<f:radiobutton path="keiyakuEmployeeKbn" value="1" label="含む" />
-							</div>
-							<div class="radio">
-								<f:radiobutton path="keiyakuEmployeeKbn" value="0" label="含まない" />
-							</div>
+						<div class="col-md-7">
+							<f:input path="nyushabi" class="form-control" id="number" placeholder="最小" type="number" size="1"/>
 						</div>
 					</td>
+				</tr>
+
+				<tr>
 					<th class="info">並び順　<font color="red">※</font></th>
 					<td>
 						<div class="col-md-6">
-							<f:errors path="sort" element="p" cssStyle="color:red"/>
+							<f:errors path="sort1" element="p" cssStyle="color:red"/>
 							<f:select path="sort" class="form-control">
 								<f:option value="" selected="selected"><c:out value="-" /></f:option>
 								<f:option value="1"><c:out value="社員番号（昇）" /></f:option>
 								<f:option value="2"><c:out value="社員番号（降）" /></f:option>
 								<f:option value="3"><c:out value="氏名かな（昇）" /></f:option>
 								<f:option value="4"><c:out value="氏名かな（降）" /></f:option>
+								<f:option value="5"><c:out value="年齢（昇）" /></f:option>
+								<f:option value="6"><c:out value="年齢（降）" /></f:option>
+							</f:select>
+							<f:select path="sort2" class="form-control">
+								<f:option value="" selected="selected"><c:out value="-" /></f:option>
+								<f:option value="1"><c:out value="社員番号（昇）" /></f:option>
+								<f:option value="2"><c:out value="社員番号（降）" /></f:option>
+								<f:option value="3"><c:out value="氏名かな（昇）" /></f:option>
+								<f:option value="4"><c:out value="氏名かな（降）" /></f:option>
+								<f:option value="5"><c:out value="年齢（昇）" /></f:option>
+								<f:option value="6"><c:out value="年齢（降）" /></f:option>
 							</f:select>
 						</div>
 					</td>
@@ -167,13 +188,19 @@ jQuery(function() {
 			<table class="table table-bordered table-hover">
 				<thead>
 					<tr class="info">
+						<td class="col-xs-2 col-sm-2 col-md-1"><div class="text-center">No</div></td>
 						<td class="col-xs-2 col-sm-2 col-md-1"><div class="text-center">社員番号</div></td>
-						<td class="col-xs-2 col-sm-2 col-md-3"><div class="text-center">氏名かな</div></td>
 						<td class="col-xs-2 col-sm-2 col-md-3"><div class="text-center">氏名</div></td>
-						<td class="col-xs-2 col-sm-2 col-md-2"><div class="text-center">生年月日</div></td>
-						<td class="col-xs-2 col-sm-2 col-md-1"><div class="text-center">役職</div></td>
 						<td class="col-xs-2 col-sm-2 col-md-1"><div class="text-center">性別</div></td>
+						<td class="col-xs-2 col-sm-2 col-md-2"><div class="text-center">入社日</div></td>
+						<td class="col-xs-2 col-sm-2 col-md-1"><div class="text-center">役職</div></td>
+						<td class="col-xs-2 col-sm-2 col-md-1"><div class="text-center">契約</div></td>
 						<td class="col-xs-2 col-sm-2 col-md-1"><div class="text-center">登録</div></td>
+					</tr>
+					<tr>
+						<td class="col-xs-2 col-sm-2 col-md-1"><div class="text-center">年齢</div></td>
+						<td class="col-xs-2 col-sm-2 col-md-2"><div class="text-center">退職日</div></td>
+						<td class="col-xs-2 col-sm-2 col-md-2" colspan="2	"><div class="text-center">案件</div></td>
 					</tr>
 				</thead>
 				<c:if test="${! empty searchEmployeeForm.employeeSearchResultForm.employeeSearchResultBoList}">
